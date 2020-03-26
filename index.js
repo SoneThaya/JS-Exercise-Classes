@@ -142,12 +142,17 @@ class Instructor extends Lambdasian{
     this.specialty = attrs.specialty;
     this.favLanguage = attrs.favLanguage;
     this.catchPhrase = attrs.catchPhrase;
+    // random number generated between -100 and 100
+    this.randomNumber = Math.floor(Math.random() * 201) - 100;
   }
   demo(subject) {
     return `Today we are learning about ${subject}`;
   }
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`
+  }
+  randomGrade(grade) {
+    return grade + this.randomNumber;
   }
 }
 
@@ -172,6 +177,7 @@ class Student extends Lambdasian{
     this.previousBackground = attrs.previousBackground;
     this.className = attrs.className;
     this.favSubjects = attrs.favSubjects;
+    this.grade = 90;
   }
   listSubjects() {
     return `${this.favSubjects}`
@@ -181,6 +187,13 @@ class Student extends Lambdasian{
   }
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`
+  }
+  graduate(grade) {
+    if (grade >= 70) {
+      return `You graduate with a score of ${grade}`
+    } else {
+      return `Sorry, you scored ${grade}`
+    }
   }
 }
 
